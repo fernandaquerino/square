@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.hello-world"
+        version   = "1.0.0">
+
+    <name>Joguirio</name>
+
+    <description>
+        Joguirio.
+    </description>
+
+    <author href="http://cbt.ifsp.edu.br/" email="thiago.paiva@ifsp.edu.br">
+        Thug Life Team
+    </author>
+
+    <gap:plugin name="org.apache.cordova.core.camera" />
+	
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="true" />
+
+    <preference name="android-minSdkVersion" value="16" />
+    <gap:platform name="android" />
+
+    <icon src="icon.png" />
+    <gap:splash src="splash.png" />
+</widget>
