@@ -18,19 +18,43 @@
 	<body>
 	<script>
 		//variáveis do jogo 
-		var canvas, ctx, ALTURA, LARGURA, frames = 0, maxPulos = 3, velocidade = 20, estadoAtual, record,
+		var canvas, ctx, ALTURA, LARGURA, frames = 0, maxPulos = 3, velocidade = 6, estadoAtual, record,
+		
+		pause = {		
+			imageObj : null, 
+			criar: function(){
+				this.imageObj = new Image(0,20);
+			},
+			
+			desenha: function ()
+			{				
+				
+				//this.imageObj.src = 'images/pause-icon.png';
+				//ctx.drawImage(this.imageObj, 20, 25);
+				// this.imageObj.onClick = function() {
+				// 	if (estadoAtual == estados.jogando){
+				// 		estadoAtual == estados.perdeu;
+				// 	}
+				// }
+				//ctx.fillStyle = "#f0f0f0";
+				//ctx.fillRect(25, 28, 2, 3);
+				
+			}
+		},
 
+				
 		estados = {
 			jogar: 0,
 			jogando: 1,
-			perdeu: 2
+			perdeu: 2,
+			pause: 3
 		},
 
 		chao = {
 			y: 550,
 			altura: 50,
 			cor: "#e8da78",
-
+			
 			desenha: function ()
 			{
 				ctx.fillStyle = this.cor;
@@ -88,6 +112,7 @@
 				ctx.fillStyle = this.cor;
 				ctx.fillRect(this.x, this.y, this.largura, this.altura);
 			}
+			
 		},
 
 			obstaculos = {
@@ -133,6 +158,26 @@
 						}
 
 					}
+
+					if (bloco.score == 10){
+						velocidade = 10;
+					} 
+
+					if (bloco.score == 20){
+						velocidade = 14;
+					}
+
+					if(bloco.score == 30){
+						velocidade = 18;
+					}
+
+					if (bloco.score == 40){
+						velocidade = 22;
+					}
+
+					if (bloco.score == 50){
+						velocidade = 26;
+					}
 				},
 
 				limpa: function (){
@@ -147,6 +192,7 @@
 						ctx.fillRect(obs.x, chao.y - obs.altura, obs.largura, obs.altura);
 					}
 				}
+
 			};
 
 
@@ -175,6 +221,8 @@
 
 			if (record == null)
 				record = 0;
+				
+			pause.criar();
 
 			roda();
 
@@ -215,6 +263,9 @@
 		}
 		
 		function desenha(){
+
+			
+		
 			ctx.fillStyle = "#80daff";
 			ctx.fillRect(0, 0, LARGURA, ALTURA);
 
@@ -227,6 +278,7 @@
 				ctx.fillStyle = "green";
 				ctx.fillRect (LARGURA /2 -50, ALTURA /2 -50, 100,100);
 			}
+						
 
 			else if (estadoAtual == estados.perdeu){
 				ctx.fillStyle = "red";
@@ -265,6 +317,7 @@
 			
 			chao.desenha();
 			bloco.desenha();
+			pause.desenha();
 
 		}
 		
