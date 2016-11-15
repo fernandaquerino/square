@@ -1,27 +1,6 @@
        //variáveis do jogo
         var canvas, ctx, ALTURA, LARGURA, VELOCIDADE = 6, maxPulos = 3, estadoAtual, record, img,
-
-        pause = {
-            imageObj: null,
-            criar: function () {
-                this.imageObj = new Image(0, 20);
-            },
-            desenha: function ()
-            {
-
-                //this.imageObj.src = 'images/pause-icon.png';
-                //ctx.drawImage(this.imageObj, 20, 25);
-                // this.imageObj.onClick = function() {
-                //  if (estadoAtual == estados.jogando){
-                //      estadoAtual == estados.perdeu;
-                //  }
-                // }
-                //ctx.fillStyle = "#f0f0f0";
-                //ctx.fillRect(25, 28, 2, 3);
-
-            }
-        },
-
+      
         pontosParaNovaFase = [5, 10, 15, 20],
         faseAtual = 0,
 
@@ -314,15 +293,16 @@
                 spriteRecord.desenha(LARGURA / 2 - spriteRecord.largura / 2, ALTURA / 2 + perdeu.altura / 2 - spriteRecord.altura / 2 - 25);
 
                 ctx.fillStyle = "#fff";
-                ctx.fillText(bloco.score, 375, 390);
 
                 if (bloco.score > record) {
                     novo.desenha(LARGURA / 2 - 180, ALTURA / 2 + 30);
                     ctx.fillText(bloco.score, 420, 470);
                 }
 
-                else
+                else{
+                    ctx.fillText(bloco.score, 375, 390);
                     ctx.fillText(record, 420, 470);
+                }
             }
         }
 
