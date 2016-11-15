@@ -167,16 +167,17 @@
 
                     if (!bloco.colidindo && obj.x <= bloco.x + bloco.largura && bloco.x <= obj.x + obj.largura && obj.y <= bloco.y + bloco.altura) {
 
-                        bloco.colidindo = true
+                        bloco.colidindo = true;
+                        bloco.cor = '#FFFFFF';
 
                         setTimeout(function() {
                             bloco.colidindo = false;
+                            bloco.cor = '#ff9239';
                         }, 500);
 
-                        if (bloco.vidas >= 1)
+                        if (bloco.vidas >= 1){
                             bloco.vidas--;
-
-                        else {
+                        }else {
                             estadoAtual = estados.perdeu
                         }
                     }
@@ -232,9 +233,6 @@
             faseAtual++;
             bloco.vidas++;
 
-            if (faseAtual == 4)
-                bloco.gravidade *= 0.6;
-
             labelNovaFase.texto = "Level " + faseAtual;
             labelNovaFase.fadeIn(0.4);
 
@@ -273,7 +271,7 @@
             img.src = "imagens/sheet.png";
 
             roda();
-        }
+        }        
 
         function roda() {
             atualiza();

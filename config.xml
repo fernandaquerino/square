@@ -4,10 +4,10 @@
         id        = "com.phonegap.hello-world"
         version   = "1.0.0">
 
-    <name>Joguirio</name>
+    <name>Square</name>
 
     <description>
-        Joguirio.
+        Square.
     </description>
 
     <author href="http://cbt.ifsp.edu.br/" email="thiago.paiva@ifsp.edu.br">
