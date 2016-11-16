@@ -1,13 +1,33 @@
+var ALTURA, LARGURA;
+
+function iniciar(){
+    ALTURA = window.innerHeight;
+    LARGURA = window.innerWidth;
+
+    if (LARGURA >= 500) {
+        LARGURA = 600;
+        ALTURA = 600;
+    }
+}
+
 function Sprite(x, y, largura, altura) {
 	this.x = x;
 	this.y = y;
 	this.largura = largura;
 	this.altura = altura;
+        this.alturaSprite = altura;
+        this.larguraSprite = largura;
+        this.xCanvas;
+        this.yCanvas;
 
 	this.desenha = function(xCanvas, yCanvas) {
-		ctx.drawImage(img, this.x, this.y, this.largura, this.altura, xCanvas, yCanvas, this.largura, this.altura);
-	}
+            this.xCanvas = xCanvas;
+            this.yCanvas = yCanvas;
+	    ctx.drawImage(img, this.x, this.y, this.larguraSprite, this.alturaSprite, xCanvas, yCanvas, this.largura, this.altura);
+	};
 }
+
+iniciar();
 
 var bg = new Sprite(0, 0, 600, 600),
 spriteBoneco = new Sprite(618, 16, 87, 87),
@@ -23,3 +43,13 @@ pinkObstacle = new Sprite(719, 867, 50, 120),
 blueObstacle = new Sprite(779, 867, 50, 120),
 greenObstacle = new Sprite(839, 867, 50, 120),
 yellowObstacle = new Sprite(898, 867, 50, 120);
+
+bg.altura = ALTURA;
+bg.largura = LARGURA;
+
+spriteChao.largura = LARGURA;
+jogar.largura = LARGURA - 150;
+jogar.altura = ALTURA - 150;
+
+perdeu.largura = LARGURA - 100;
+perdeu.altura = ALTURA - 100;

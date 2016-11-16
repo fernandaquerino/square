@@ -1,5 +1,5 @@
        //variáveis do jogo
-        var canvas, ctx, ALTURA, LARGURA, VELOCIDADE = 6, maxPulos = 3, estadoAtual, record, img,
+        var canvas, ctx, VELOCIDADE = 6, maxPulos = 3, estadoAtual, record, img,
       
         pontosParaNovaFase = [5, 10, 15, 20],
         faseAtual = 0,
@@ -38,7 +38,7 @@
         },
 
         chao = {
-            y: 550,
+            y: ALTURA - 50,
             x: 0,
             altura: 50,
 
@@ -124,8 +124,7 @@
             insere: function() {
                 this._obs.push({
                     x: LARGURA,
-                    y: chao.y - Math.floor(20 + Math.random() * 100),
-                    //largura: 50 + Math.floor(10 * Math.random()),
+                    y: chao.y - Math.floor(20 + Math.random() * 100),                    
                     largura: 50,
                     sprite: this._sprites[Math.floor(this._sprites.length * Math.random())]
                 });
@@ -221,14 +220,9 @@
         }
 
         function main() {
-            ALTURA = window.innerHeight;
-            LARGURA = window.innerWidth;
-
-            if (LARGURA >= 500) {
-                LARGURA = 600;
-                ALTURA = 600;
-            }
-
+            
+            chao.y = ALTURA - chao.altura;
+            
             canvas = document.createElement("canvas");
             canvas.width = LARGURA;
             canvas.height = ALTURA;
@@ -273,10 +267,10 @@
             ctx.fillStyle = "#fff";
             ctx.font = "50px Arial";
             ctx.fillText(bloco.score, 30, 68);
-            ctx.fillText(bloco.vidas, 540, 68);
+            ctx.fillText(bloco.vidas, LARGURA - 40, 68);
 
             ctx.fillStyle = "rgba(0, 0, 0, " + labelNovaFase.opacidade + ")";
-            ctx.fillText(labelNovaFase.texto, canvas.width / 2 - ctx.measureText(labelNovaFase.texto).width / 2, canvas.height / 3);
+            ctx.fillText(labelNovaFase.texto, bloco.x + 70 , ALTURA / 3);
 
             if (estadoAtual == estados.jogando)
                 obstaculos.desenha();
@@ -284,8 +278,9 @@
             chao.desenha();
             bloco.desenha();
 
-            if (estadoAtual == estados.jogar)
+            if (estadoAtual == estados.jogar){
                 jogar.desenha(LARGURA / 2 - jogar.largura / 2, ALTURA / 2 - jogar.altura / 2);
+            }
 
             if (estadoAtual == estados.perdeu) {
                 perdeu.desenha(LARGURA / 2 - perdeu.largura / 2, ALTURA / 2 - perdeu.altura / 2 - spriteRecord.altura / 2);
@@ -296,12 +291,12 @@
 
                 if (bloco.score > record) {
                     novo.desenha(LARGURA / 2 - 180, ALTURA / 2 + 30);
-                    ctx.fillText(bloco.score, 420, 470);
+                    ctx.fillText(bloco.score, spriteRecord.largura - 50, chao.y - 10);
                 }
 
                 else{
-                    ctx.fillText(bloco.score, 375, 390);
-                    ctx.fillText(record, 420, 470);
+                    ctx.fillText(bloco.score, spriteRecord.largura - 70, chao.y - 75);
+                    ctx.fillText(record, spriteRecord.largura - 70, chao.y - 10);
                 }
             }
         }
