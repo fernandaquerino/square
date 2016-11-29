@@ -16,7 +16,7 @@
 
     <gap:plugin name="org.apache.cordova.core.camera" />
 	
-    <preference name="orientation" value="portrait" />
+    <preference name="orientation" value="landscape" />
     <preference name="fullscreen" value="true" />
 
     <preference name="android-minSdkVersion" value="16" />
