@@ -10,8 +10,8 @@
         Square.
     </description>
 
-    <author href="http://cbt.ifsp.edu.br/" email="thiago.paiva@ifsp.edu.br">
-        Thug Life Team
+    <author href="http://cbt.ifsp.edu.br/" email="fernandaquerinodelima@hotmail.com">
+       Fernanda Querino
     </author>
 
     <gap:plugin name="org.apache.cordova.core.camera" />
